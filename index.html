@@ -78,7 +78,7 @@ function clickfunc(){
      //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
 	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
-	if (canvasX > 770 && canvasY > 20 && canvasY < 380){shiftY = (canvasY-20)*upperBound/(395); ctx.fillStyle = "gray"; storedY = canvasY;}
+	if (canvasX > 770 && canvasY > 20 && canvasY < 390){shiftY = (canvasY-20)*(1600)/(395); ctx.fillStyle = "gray"; storedY = canvasY;}
 }
 
 //var one = document.getElementById("one");
@@ -89,15 +89,16 @@ var scene = 0;
 
 var shiftY = 0;
 var storedY = 0;
-var upperBound = 1200; 
+var upperBound = 1600; 
 var sliderY = 0; 
+var changingY = 0;
 function move() {
 
 ctx.fillStyle = "lightblue";
 ctx.fillRect(0,0,800,400);
 
 
-ctx.drawImage(testimg,0, 0 - shiftY, 800, 1600);
+ctx.drawImage(testimg,0, 0 - changingY, 800, 1600);
 
 ctx.fillStyle = "gray";
 ctx.fillRect(770,20,20,370);
@@ -106,8 +107,12 @@ ctx.strokeStyle = "white";
 ctx.strokeRect(770,20,20,370);
 
 
-ctx.fillStyle = "red";
-ctx.fillRect(770,storedY,20,20);
+ctx.fillStyle = "#3d3d3d";
+ctx.fillRect(770,changingY,20,20);
+
+if (storedY > changingY){changingY = changingY + 10;}
+if (storedY < changingY){changingY = changingY - 10;}
+
 
 //ctx.drawImage(up,630, 10, 160, 80);
 
