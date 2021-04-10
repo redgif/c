@@ -75,9 +75,10 @@ var clicknum = 0;
 
 var outputString = ""; 
 function clickfunc(){
-     if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
-	 if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
+     //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
+	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
+	if (canvasX > 770 && canvasY > 25){shiftY = canvasY*upperBound/(390); ctx.fillStyle = "gray"; storedY = canvasY;}
 }
 
 //var one = document.getElementById("one");
@@ -87,17 +88,30 @@ function clickfunc(){
 var scene = 0; 
 
 var shiftY = 0;
-
+var storedY = 0;
+var upperBound = 1200; 
+var sliderY = 0; 
 function move() {
 
-//ctx.fillStyle = "green";
+ctx.fillStyle = "lightblue";
 //ctx.fillRect(0,0,800,400);
 
-ctx.drawImage(testimg,0, 0 + shiftY, 800, 1600);
 
-ctx.drawImage(up,630, 10, 160, 80);
+ctx.drawImage(testimg,0, 0 - shiftY, 800, 1600);
 
-ctx.drawImage(down,630, 310, 160, 80);
+ctx.fillStyle = "gray";
+ctx.fillRect(770,20,20,370);
+
+ctx.strokeStyle = "white";
+ctx.strokeRect(770,20,20,370);
+
+
+ctx.fillStyle = "red";
+ctx.fillRect(770,storedY,20,20);
+
+//ctx.drawImage(up,630, 10, 160, 80);
+
+//ctx.drawImage(down,630, 310, 160, 80);
 
 //ctx.drawImage(one,100, 100, 150, 200);
 
@@ -110,7 +124,7 @@ ctx.font = "20px Arial";
 ctx.fillText(canvasX, 10, 380);
 ctx.fillText(canvasY, 100, 380);
 
-//ctx.fillText(resultsArray, 10, 30);
+ctx.fillText(sliderY, 10, 30);
 
 
 }//End of FUNCTION
