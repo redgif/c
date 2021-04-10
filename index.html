@@ -78,7 +78,7 @@ function clickfunc(){
      //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
 	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
-	if (canvasX > 770 && canvasY > 25){shiftY = canvasY*upperBound/(390); ctx.fillStyle = "gray"; storedY = canvasY;}
+	if (canvasX > 770 && canvasY > 20 && canvasY < 380){shiftY = (canvasY-20)*upperBound/(395); ctx.fillStyle = "gray"; storedY = canvasY;}
 }
 
 //var one = document.getElementById("one");
@@ -94,7 +94,7 @@ var sliderY = 0;
 function move() {
 
 ctx.fillStyle = "lightblue";
-//ctx.fillRect(0,0,800,400);
+ctx.fillRect(0,0,800,400);
 
 
 ctx.drawImage(testimg,0, 0 - shiftY, 800, 1600);
