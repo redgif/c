@@ -6,6 +6,12 @@
 <img id="two" width="0" height="0" style="visibility:hidden" src="two.png">
 <img id="three" width="0" height="0" style="visibility:hidden" src="three.png">
 
+<img id="up" width="0" height="0" style="visibility:hidden" src="up.png">
+<img id="down" width="0" height="0" style="visibility:hidden" src="down.png">
+
+<img id="testimg" width="0" height="0" style="visibility:hidden" src="testimg.png">
+
+
 <canvas id="myCanvas" onload = 'move()' onclick = "clickfunc()" width="800" height="400" style=" padding-left: 0;
     padding-right: 0;
 	
@@ -69,7 +75,9 @@ var clicknum = 0;
 
 var outputString = ""; 
 function clickfunc(){
-     
+     if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
+	 if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
+
 }
 
 //var one = document.getElementById("one");
@@ -78,21 +86,29 @@ function clickfunc(){
 
 var scene = 0; 
 
+var shiftY = 0;
+
 function move() {
 
-ctx.fillStyle = "black";
-ctx.fillRect(0,0,800,400);
+//ctx.fillStyle = "green";
+//ctx.fillRect(0,0,800,400);
 
-ctx.drawImage(one,100, 100, 150, 200);
+ctx.drawImage(testimg,0, 0 + shiftY, 800, 1600);
 
-ctx.drawImage(two,300, 100, 150, 200);
+ctx.drawImage(up,630, 10, 160, 80);
 
-ctx.drawImage(three,500, 100, 150, 200);
+ctx.drawImage(down,630, 310, 160, 80);
+
+//ctx.drawImage(one,100, 100, 150, 200);
+
+//ctx.drawImage(two,300, 100, 150, 200);
+
+//ctx.drawImage(three,500, 100, 150, 200);
 
 ctx.fillStyle = "white";
 ctx.font = "20px Arial";
-//ctx.fillText(canvasX, 10, 380);
-//ctx.fillText(canvasY, 100, 380);
+ctx.fillText(canvasX, 10, 380);
+ctx.fillText(canvasY, 100, 380);
 
 //ctx.fillText(resultsArray, 10, 30);
 
