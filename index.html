@@ -10,6 +10,10 @@
 <img id="down" width="0" height="0" style="visibility:hidden" src="down.png">
 
 <img id="testimg" width="0" height="0" style="visibility:hidden" src="testimg.png">
+<img id="nature" width="0" height="0" style="visibility:hidden" src="nature.png">
+
+<img id="MorenaBaccarin" width="0" height="0" style="visibility:hidden" src="MorenaBaccarin.png">
+
 
 
 <canvas id="myCanvas" onload = 'move()' onclick = "clickfunc()" width="800" height="400" style=" padding-left: 0;
@@ -74,16 +78,48 @@ var resultsArray = [];
 var clicknum = 0;
 
 var outputString = ""; 
+
+var myVar2 = setInterval(clickfunc, 20);
+
 function clickfunc(){
      //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
 	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
-	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; storedY = canvasY; if (canvasY < 50){shiftY = 0;} if(canvasY > 350){shiftY = 2000;}}
+	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; storedY = canvasY;}
 }
+
 
 //var one = document.getElementById("one");
 //var two = document.getElementById("two");
 //var three = document.getElementById("three");
+
+var block = function(x,y,name,cost) {
+    this.x = x;
+    this.y = y;
+    this.name = name;
+    this.cost = cost;
+	this.lineWidth = 5;
+};
+
+block.prototype.draw = function() {
+ctx.drawImage(MorenaBaccarin, this.x, this.y - shiftY,150,200);
+
+
+ctx.fillStyle = "white";
+ctx.font = "15px Arial";
+ctx.fillText(this.name, this.x, this.y+220 - shiftY); 
+
+ctx.lineWidth = this.lineWidth;
+ctx.strokeStyle = "#8ff8ff";
+ctx.strokeRect(this.x,this.y - shiftY,150,200);
+
+
+};
+
+var blockArray = [];
+
+blockArray.push(new block(30,30,"Morena Baccarin",500));
+
 
 var scene = 0; 
 
@@ -99,36 +135,21 @@ ctx.fillStyle = "black";
 ctx.fillRect(0,0,800,400);
 
 
-ctx.drawImage(testimg,0, 0 - shiftYchanging, 800, 2400);
+ctx.drawImage(nature,0, 0 - shiftY, 800, 2400);
 
-if (shiftY > shiftYchanging){shiftYchanging = shiftYchanging + 20;}
-if (shiftY < shiftYchanging){shiftYchanging = shiftYchanging - 20;}
-if (shiftY > shiftYchanging){shiftYchanging = shiftYchanging + 1;}
-if (shiftY < shiftYchanging){shiftYchanging = shiftYchanging - 1;}
 ctx.fillStyle = "gray";
 ctx.fillRect(770,20,20,370);
 
 ctx.strokeStyle = "white";
 ctx.strokeRect(770,20,20,370);
 
-
 ctx.fillStyle = "#3d3d3d";
-ctx.fillRect(770,changingY,20,20);
+ctx.fillRect(770,storedY,20,20);
 
-if (storedY > changingY){changingY = changingY + 10;}
-if (storedY < changingY){changingY = changingY - 10;}
 
-if (storedY > changingY){changingY = changingY + 1;}
-if (storedY < changingY){changingY = changingY - 1;}
-//ctx.drawImage(up,630, 10, 160, 80);
-
-//ctx.drawImage(down,630, 310, 160, 80);
-
-//ctx.drawImage(one,100, 100, 150, 200);
-
-//ctx.drawImage(two,300, 100, 150, 200);
-
-//ctx.drawImage(three,500, 100, 150, 200);
+ for(var i = 0; i < blockArray.length ; i++) {
+        blockArray[i].draw();
+}
 
 ctx.fillStyle = "white";
 ctx.font = "20px Arial";
