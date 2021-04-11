@@ -11,6 +11,7 @@
 
 <img id="testimg" width="0" height="0" style="visibility:hidden" src="testimg.png">
 <img id="nature" width="0" height="0" style="visibility:hidden" src="nature.png">
+<img id="check" width="0" height="0" style="visibility:hidden" src="check.png">
 
 <img id="MorenaBaccarin" width="0" height="0" style="visibility:hidden" src="MorenaBaccarin.png">
 <img id="MilanaVayntrub" width="0" height="0" style="visibility:hidden" src="MilanaVayntrub.png">
@@ -109,6 +110,8 @@ if (this.name == "Milana Vayntrub"){ctx.drawImage(MilanaVayntrub, this.x, this.y
 ctx.fillStyle = "white";
 ctx.font = "15px Arial";
 ctx.fillText(this.name, this.x, this.y+220 - shiftY); 
+ctx.fillText("Points: " + this.cost, this.x, this.y+240 - shiftY); 
+
 
 ctx.lineWidth = this.lineWidth;
 ctx.strokeStyle = "#8ff8ff";
@@ -119,14 +122,18 @@ if (canvasX < this.x || canvasX > this.x + 150){this.lineWidth = 5;}
 
 if (canvasY < this.y - shiftY || canvasY > this.y + 200 - shiftY){this.lineWidth = 5;}
 
+if (canvasX > this.x && canvasX < this.x + 150){
+if (canvasY > this.y - shiftY && canvasY < this.y + 200 - shiftY){
+ctx.drawImage(check, this.x, this.y - shiftY,150,200);
+}}
 
 };
 
 var blockArray = [];
 
-blockArray.push(new block(30,30,"Morena Baccarin",500));
+blockArray.push(new block(30,30,"Morena Baccarin",3));
 
-blockArray.push(new block(300,30,"Milana Vayntrub",500));
+blockArray.push(new block(300,30,"Milana Vayntrub",5));
 
 
 var scene = 0; 
@@ -145,7 +152,6 @@ ctx.lineWidth = 5;
 ctx.fillStyle = "black";
 ctx.fillRect(0,0,800,400);
 
-
 ctx.drawImage(nature,0, 0 - shiftY, 800, 2400);
 
 ctx.fillStyle = "gray";
@@ -153,8 +159,6 @@ ctx.fillRect(770,20,20,370);
 
 ctx.strokeStyle = "white";
 ctx.strokeRect(770,20,20,370);
-
-
 
 ctx.fillStyle = "#3d3d3d";
 ctx.fillRect(770,storedY,20,20);
