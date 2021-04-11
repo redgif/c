@@ -87,14 +87,20 @@ function clickfunc(){
      //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
 	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
-	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; 
-	storedY = canvasY; if (canvasY < 50){shiftY = 0;}}
+	//if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; 
+	//storedY = canvasY; if (canvasY < 50){shiftY = 0;}}
 	
 	 for(var i = 0; i < blockArray.length ; i++) {
         blockArray[i].draw();
 		if (canvasX > blockArray[i].x && canvasX < blockArray[i].x + 150){
 		if (canvasY > blockArray[i].y - shiftY && canvasY < blockArray[i].y + 200 - shiftY){
-		if (blockArray[i].selected == 0){blockArray[i].selected = 1; points = points - blockArray[i].cost;}
+			if (blockArray[i].selected == 1){blockArray[i].timesClicked += 1;}
+			if (points - blockArray[i].cost >= 0 && blockArray[i].selected == 0){blockArray[i].timesClicked += 1;}
+			if (blockArray[i].selected == 0 && points - blockArray[i].cost >= 0 && blockArray[i].timesClicked == 1){
+			blockArray[i].selected = 1; points = points - blockArray[i].cost;
+			}
+			if (blockArray[i].timesClicked == 2){points = points + blockArray[i].cost; blockArray[i].selected = 0;
+			blockArray[i].timesClicked = 0;}
         }}
 	 }
 	
@@ -112,6 +118,7 @@ var block = function(x,y,name,cost) {
     this.cost = cost;
 	this.lineWidth = 5;
 	this.selected = 0;
+	this.timesClicked = 0; 
 };
 
 block.prototype.draw = function() {
@@ -146,13 +153,13 @@ if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
 
 var blockArray = [];
 
-blockArray.push(new block(30,80,"Morena Baccarin",4));
+blockArray.push(new block(30,80,"Morena Baccarin",5));
 
-blockArray.push(new block(220,80,"Milana Vayntrub",3));
+blockArray.push(new block(220,80,"Milana Vayntrub",4));
 
-blockArray.push(new block(410,80,"Chloe Bennet",2));
+blockArray.push(new block(410,80,"Chloe Bennet",3));
 
-blockArray.push(new block(590,80,"Hailee Steinfeld",1));
+blockArray.push(new block(590,80,"Hailee Steinfeld",2));
 
 
 var scene = 0; 
@@ -174,13 +181,13 @@ ctx.fillRect(0,0,800,400);
 ctx.drawImage(nature,0, 0 - shiftY, 800, 2400);
 
 ctx.fillStyle = "gray";
-ctx.fillRect(770,20,20,370);
+//ctx.fillRect(770,20,20,370);
 
 ctx.strokeStyle = "white";
-ctx.strokeRect(770,20,20,370);
+//ctx.strokeRect(770,20,20,370);
 
 ctx.fillStyle = "#3d3d3d";
-ctx.fillRect(770,storedY,20,20);
+//ctx.fillRect(770,storedY,20,20);
 
 
  for(var i = 0; i < blockArray.length ; i++) {
