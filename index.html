@@ -15,6 +15,8 @@
 
 <img id="MorenaBaccarin" width="0" height="0" style="visibility:hidden" src="MorenaBaccarin.png">
 <img id="MilanaVayntrub" width="0" height="0" style="visibility:hidden" src="MilanaVayntrub.png">
+<img id="ChloeBennet" width="0" height="0" style="visibility:hidden" src="ChloeBennet.png">
+<img id="HaileeSteinfeld" width="0" height="0" style="visibility:hidden" src="HaileeSteinfeld.png">
 
 
 
@@ -115,7 +117,8 @@ var block = function(x,y,name,cost) {
 block.prototype.draw = function() {
 if (this.name == "Morena Baccarin"){ctx.drawImage(MorenaBaccarin, this.x, this.y - shiftY,150,200);}
 if (this.name == "Milana Vayntrub"){ctx.drawImage(MilanaVayntrub, this.x, this.y - shiftY,150,200);}
-
+if (this.name == "Chloe Bennet"){ctx.drawImage(ChloeBennet, this.x, this.y - shiftY,150,200);}
+if (this.name == "Hailee Steinfeld"){ctx.drawImage(HaileeSteinfeld, this.x, this.y - shiftY,150,200);}
 
 ctx.fillStyle = "white";
 ctx.font = "15px Arial";
@@ -143,9 +146,13 @@ if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
 
 var blockArray = [];
 
-blockArray.push(new block(30,60,"Morena Baccarin",3));
+blockArray.push(new block(30,80,"Morena Baccarin",4));
 
-blockArray.push(new block(300,60,"Milana Vayntrub",5));
+blockArray.push(new block(220,80,"Milana Vayntrub",3));
+
+blockArray.push(new block(410,80,"Chloe Bennet",2));
+
+blockArray.push(new block(590,80,"Hailee Steinfeld",1));
 
 
 var scene = 0; 
