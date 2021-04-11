@@ -13,6 +13,7 @@
 <img id="nature" width="0" height="0" style="visibility:hidden" src="nature.png">
 
 <img id="MorenaBaccarin" width="0" height="0" style="visibility:hidden" src="MorenaBaccarin.png">
+<img id="MilanaVayntrub" width="0" height="0" style="visibility:hidden" src="MilanaVayntrub.png">
 
 
 
@@ -79,13 +80,12 @@ var clicknum = 0;
 
 var outputString = ""; 
 
-var myVar2 = setInterval(scrollFunc, 20);
-
-function scrollFunc(){
+function clickfunc(){
      //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
 	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
 
-	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; storedY = canvasY;}
+	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; 
+	storedY = canvasY; if (canvasY < 50){shiftY = 0;}}
 }
 
 
@@ -102,7 +102,8 @@ var block = function(x,y,name,cost) {
 };
 
 block.prototype.draw = function() {
-ctx.drawImage(MorenaBaccarin, this.x, this.y - shiftY,150,200);
+if (this.name == "Morena Baccarin"){ctx.drawImage(MorenaBaccarin, this.x, this.y - shiftY,150,200);}
+if (this.name == "Milana Vayntrub"){ctx.drawImage(MilanaVayntrub, this.x, this.y - shiftY,150,200);}
 
 
 ctx.fillStyle = "white";
@@ -113,12 +114,19 @@ ctx.lineWidth = this.lineWidth;
 ctx.strokeStyle = "#8ff8ff";
 ctx.strokeRect(this.x,this.y - shiftY,150,200);
 
+if (canvasX > this.x && canvasX < this.x + 150){if (canvasY > this.y - shiftY && canvasY < this.y + 200 - shiftY){this.lineWidth = 8;}}
+if (canvasX < this.x || canvasX > this.x + 150){this.lineWidth = 5;}
+
+if (canvasY < this.y - shiftY || canvasY > this.y + 200 - shiftY){this.lineWidth = 5;}
+
 
 };
 
 var blockArray = [];
 
 blockArray.push(new block(30,30,"Morena Baccarin",500));
+
+blockArray.push(new block(300,30,"Milana Vayntrub",500));
 
 
 var scene = 0; 
@@ -129,7 +137,10 @@ var upperBound = 2200;
 var sliderY = 0; 
 var changingY = 0;
 var shiftYchanging = 0;
+var points = 10;  
 function move() {
+
+ctx.lineWidth = 5;
 
 ctx.fillStyle = "black";
 ctx.fillRect(0,0,800,400);
@@ -143,6 +154,8 @@ ctx.fillRect(770,20,20,370);
 ctx.strokeStyle = "white";
 ctx.strokeRect(770,20,20,370);
 
+
+
 ctx.fillStyle = "#3d3d3d";
 ctx.fillRect(770,storedY,20,20);
 
@@ -155,6 +168,12 @@ ctx.fillStyle = "white";
 ctx.font = "20px Arial";
 ctx.fillText(canvasX, 10, 380);
 ctx.fillText(canvasY, 100, 380);
+
+ctx.fillStyle = "gray";
+ctx.fillRect(330,0,100,40);
+
+ctx.fillStyle = "white";
+ctx.fillText("Points " + points, 340, 25);
 
 //ctx.fillText(storedY, 10, 30);
 
