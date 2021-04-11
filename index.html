@@ -87,7 +87,16 @@ function clickfunc(){
 
 	if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; 
 	storedY = canvasY; if (canvasY < 50){shiftY = 0;}}
-}
+	
+	 for(var i = 0; i < blockArray.length ; i++) {
+        blockArray[i].draw();
+		if (canvasX > blockArray[i].x && canvasX < blockArray[i].x + 150){
+		if (canvasY > blockArray[i].y - shiftY && canvasY < blockArray[i].y + 200 - shiftY){
+		if (blockArray[i].selected == 0){blockArray[i].selected = 1; points = points - blockArray[i].cost;}
+        }}
+	 }
+	
+};
 
 
 //var one = document.getElementById("one");
@@ -100,6 +109,7 @@ var block = function(x,y,name,cost) {
     this.name = name;
     this.cost = cost;
 	this.lineWidth = 5;
+	this.selected = 0;
 };
 
 block.prototype.draw = function() {
@@ -122,18 +132,20 @@ if (canvasX < this.x || canvasX > this.x + 150){this.lineWidth = 5;}
 
 if (canvasY < this.y - shiftY || canvasY > this.y + 200 - shiftY){this.lineWidth = 5;}
 
-if (canvasX > this.x && canvasX < this.x + 150){
-if (canvasY > this.y - shiftY && canvasY < this.y + 200 - shiftY){
-ctx.drawImage(check, this.x, this.y - shiftY,150,200);
-}}
+if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
+
+//if (clickActive == 1 && canvasX > this.x && canvasX < this.x + 150){
+//if (canvasY > this.y - shiftY && canvasY < this.y + 200 - shiftY){
+//this.selected = 1; 
+//}}
 
 };
 
 var blockArray = [];
 
-blockArray.push(new block(30,30,"Morena Baccarin",3));
+blockArray.push(new block(30,60,"Morena Baccarin",3));
 
-blockArray.push(new block(300,30,"Milana Vayntrub",5));
+blockArray.push(new block(300,60,"Milana Vayntrub",5));
 
 
 var scene = 0; 
