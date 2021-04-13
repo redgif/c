@@ -33,8 +33,9 @@
 <img id="CamilaMendes" width="0" height="0" style="visibility:hidden" src="celebs/CamilaMendes.png">
 <img id="ChloeBennet" width="0" height="0" style="visibility:hidden" src="celebs/ChloeBennet.png">
 	
-<img id="" width="0" height="0" style="visibility:hidden" src="celebs/.png">
-<img id="" width="0" height="0" style="visibility:hidden" src="celebs/.png">
+<img id="DaisyRidley" width="0" height="0" style="visibility:hidden" src="celebs/DaisyRidley.png">
+<img id="DebbyRyan" width="0" height="0" style="visibility:hidden" src="celebs/DebbyRyan.png">
+	
 <img id="" width="0" height="0" style="visibility:hidden" src="celebs/.png">
 <img id="" width="0" height="0" style="visibility:hidden" src="celebs/.png">
 
@@ -156,6 +157,9 @@ if (this.name == "Brenda Song"){ctx.drawImage(BrendaSong, this.x, this.y - shift
 //C
 if (this.name == "Camila Mendes"){ctx.drawImage(CamilaMendes, this.x, this.y - shiftY,150,200);}
 if (this.name == "Chloe Bennet"){ctx.drawImage(ChloeBennet, this.x, this.y - shiftY,150,200);}
+
+if (this.name == "Debby Ryan"){ctx.drawImage(DebbyRyan, this.x, this.y - shiftY,150,200);}
+if (this.name == "Daisy Ridley"){ctx.drawImage(DaisyRidley, this.x, this.y - shiftY,150,200);}
 	
 //if (this.name == ""){ctx.drawImage(, this.x, this.y - shiftY,150,200);}
 
@@ -189,32 +193,40 @@ if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
 var blockArray = [];
 
 //Row 1
-blockArray.push(new block(30,80,"Morena Baccarin",5));
+blockArray.push(new block(30,80,"Alexandra Daddario",5));
 
-blockArray.push(new block(220,80,"Milana Vayntrub",4));
+blockArray.push(new block(220,80,"Alice Eve",4));
 
-blockArray.push(new block(410,80,"Chloe Bennet",3));
+blockArray.push(new block(410,80,"Amanda Seyfried",3));
 
-blockArray.push(new block(590,80,"Hailee Steinfeld",2));
+blockArray.push(new block(590,80,"Ana De Armas",2));
 
 //Row 2
-blockArray.push(new block(30,350,"Ana De Armas",1));
+blockArray.push(new block(30,350,"Anne Hathaway",1));
 
-blockArray.push(new block(220,350,"Anne Hathaway",1));
+blockArray.push(new block(220,350,"Anya Taylor Joy",1));
 
-blockArray.push(new block(410,350,"Anya Taylor Joy",1));
+blockArray.push(new block(410,350,"Ariel Winter",1));
 
-blockArray.push(new block(590,350,"Ariel Winter",1));
+blockArray.push(new block(590,350,"Barbara Palvin",1));
 
 //Row 3
-blockArray.push(new block(30,620,"Amanda Seyfried",1));
+blockArray.push(new block(30,620,"Bella Thorne",1));
 
-blockArray.push(new block(220,620,"Barbara Palvin",1));
+blockArray.push(new block(220,620,"Blake Lively",1));
 
 blockArray.push(new block(410,620,"Brenda Song",1));
 
-blockArray.push(new block(590,620,"Blake Lively",1));
+blockArray.push(new block(590,620,"Camila Mendes",1));
 
+//Row 4
+blockArray.push(new block(30,890,"Chloe Bennet",1));
+
+blockArray.push(new block(220,890,"Daisy Ridley",1));
+
+blockArray.push(new block(410,890,"Debby Ryan",1));
+
+blockArray.push(new block(590,890,"Camila Mendes",1));
 
 
 var scene = 0; 
