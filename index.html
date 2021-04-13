@@ -47,7 +47,7 @@
 <img id="GalGadot" width="0" height="0" style="visibility:hidden" src="celebs/GalGadot.png">
 <img id="GemmaArterton" width="0" height="0" style="visibility:hidden" src="celebs/GemmaArterton.png">
 	
-<img id="HaileeSteinfeld" width="0" height="0" style="visibility:hidden" src="celebs/HaileeSteinfeld.png">
+<img id="Hail" width="0" height="0" style="visibility:hidden" src="celebs/Hail.png">
 <img id="HayleyAtwell" width="0" height="0" style="visibility:hidden" src="celebs/HayleyAtwell.png">
 	
 <img id="IsabelaMerced" width="0" height="0" style="visibility:hidden" src="celebs/IsabelaMerced.png">
@@ -124,10 +124,13 @@ var clicknum = 0;
 
 var outputString = ""; 
 
+var myVar2 = setInterval(bobmover, 20);
+
 function clickfunc(){
-   if (shiftY > 100 && shiftY < 2000){
-     if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60){shiftY = shiftY - 270;}}
-     if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){shiftY = shiftY + 270;}}
+   
+   if (bobmover == 0){
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60 && shiftY > 0){bobmover = 1;}}
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){bobmover = -1;}}
    }
 
 	 for(var i = 0; i < blockArray.length ; i++) {
@@ -188,7 +191,7 @@ if (this.name == "Emmy Rossum"){ctx.drawImage(EmmyRossum, this.x, this.y - shift
 if (this.name == "Gal Gadot"){ctx.drawImage(GalGadot, this.x, this.y - shiftY,150,200);}
 if (this.name == "Gemma Arterton"){ctx.drawImage(GemmaArterton, this.x, this.y - shiftY,150,200);}
 	
-//if (this.name == "Hailee Steinfeld"){ctx.drawImage(HaileeSteinfeld, this.x, this.y - shiftY,150,200);}
+if (this.name == "Hailee Steinfeld"){ctx.drawImage(Hail, this.x, this.y - shiftY,150,200);}
 if (this.name == "Hayley Atwell"){ctx.drawImage(HayleyAtwell, this.x, this.y - shiftY,150,200);}
 	
 if (this.name == "Isabela Merced"){ctx.drawImage(IsabelaMerced, this.x, this.y - shiftY,150,200);}
@@ -196,7 +199,7 @@ if (this.name == "Isabela Merced"){ctx.drawImage(IsabelaMerced, this.x, this.y -
 if (this.name == "Jamie Chung"){ctx.drawImage(JamieChung, this.x, this.y - shiftY,150,200);}
 if (this.name == "Jane Levy"){ctx.drawImage(JaneLevy, this.x, this.y - shiftY,150,200);}
 if (this.name == "Jeniffer Love Hewitt"){ctx.drawImage(JenifferLoveHewitt, this.x, this.y - shiftY,150,200);}
-//if (this.name == "Jeniffer Lawrence"){ctx.drawImage(JenifferLawrence, this.x, this.y - shiftY,150,200);}
+if (this.name == "Jeniffer Lawrence"){ctx.drawImage(JenifferLawrence, this.x, this.y - shiftY,150,200);}
 if (this.name == "Jessica Alba"){ctx.drawImage(JessicaAlba, this.x, this.y - shiftY,150,200);}
 if (this.name == "Jessica Chastain"){ctx.drawImage(JessicaChastain, this.x, this.y - shiftY,150,200);}
 if (this.name == "Jessica Kennedy"){ctx.drawImage(JessicaKennedy, this.x, this.y - shiftY,150,200);}
@@ -313,8 +316,14 @@ var upperBound = 2200;
 var sliderY = 0; 
 var changingY = 0;
 var shiftYchanging = 0;
-var points = 10;  
+var points = 10; 
+
+var bobmover = 0; 
+var timer = 0;
 function move() {
+
+if (bobmover == 1){timer = timer + 1; if (timer < 28){shiftY = shiftY - 10;} if (timer >= 27){bobmover = 0; timer = 0;}}
+if (bobmover == -1){timer = timer + 1; if (timer < 28){shiftY = shiftY + 10;} if (timer >= 27){bobmover = 0; timer = 0;}}
 
 ctx.lineWidth = 5;
 
@@ -353,7 +362,7 @@ ctx.fillRect(30,0,100,40);
 ctx.fillStyle = "white";
 ctx.fillText("Points " + points, 40, 25);
 
-//ctx.fillText(storedY, 10, 30);
+ctx.fillText(bobmover, 10, 30);
 
 
 }//End of FUNCTION
