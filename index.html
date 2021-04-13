@@ -84,12 +84,9 @@ var clicknum = 0;
 var outputString = ""; 
 
 function clickfunc(){
-     //if (canvasX > 630 && canvasX < 780){if (canvasY > 10 && canvasY < 80){shiftY = shiftY + 20;}}
-	 //if (canvasX > 630 && canvasX < 780){if (canvasY > 310 && canvasY < 390){shiftY = shiftY - 20;}}
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60){shiftY = shiftY - 240;}}
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){shiftY = shiftY + 240;}}
 
-	//if (canvasX > 770 && canvasY > 10 && canvasY < 390){shiftY = (canvasY-20)*(upperBound)/(390); ctx.fillStyle = "gray"; 
-	//storedY = canvasY; if (canvasY < 50){shiftY = 0;}}
-	
 	 for(var i = 0; i < blockArray.length ; i++) {
         blockArray[i].draw();
 		if (canvasX > blockArray[i].x && canvasX < blockArray[i].x + 150){
@@ -106,10 +103,6 @@ function clickfunc(){
 	
 };
 
-
-//var one = document.getElementById("one");
-//var two = document.getElementById("two");
-//var three = document.getElementById("three");
 
 var block = function(x,y,name,cost) {
     this.x = x;
@@ -144,10 +137,6 @@ if (canvasY < this.y - shiftY || canvasY > this.y + 200 - shiftY){this.lineWidth
 
 if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
 
-//if (clickActive == 1 && canvasX > this.x && canvasX < this.x + 150){
-//if (canvasY > this.y - shiftY && canvasY < this.y + 200 - shiftY){
-//this.selected = 1; 
-//}}
 
 };
 
@@ -160,6 +149,10 @@ blockArray.push(new block(220,80,"Milana Vayntrub",4));
 blockArray.push(new block(410,80,"Chloe Bennet",3));
 
 blockArray.push(new block(590,80,"Hailee Steinfeld",2));
+
+blockArray.push(new block(30,350,"Chloe Bennet",5));
+
+blockArray.push(new block(30,620,"Milana Vayntrub",5));
 
 
 var scene = 0; 
@@ -194,16 +187,21 @@ ctx.fillStyle = "#3d3d3d";
         blockArray[i].draw();
 }
 
+
+ctx.drawImage(up, 330,0,120,60);
+ctx.drawImage(down, 330,340,120,60);
+
+
 ctx.fillStyle = "white";
 ctx.font = "20px Arial";
 ctx.fillText(canvasX, 10, 380);
 ctx.fillText(canvasY, 100, 380);
 
 ctx.fillStyle = "gray";
-ctx.fillRect(330,0,100,40);
+ctx.fillRect(30,0,100,40);
 
 ctx.fillStyle = "white";
-ctx.fillText("Points " + points, 340, 25);
+ctx.fillText("Points " + points, 40, 25);
 
 //ctx.fillText(storedY, 10, 30);
 
