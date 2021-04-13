@@ -84,8 +84,8 @@ var clicknum = 0;
 var outputString = ""; 
 
 function clickfunc(){
-     if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60){shiftY = shiftY - 240;}}
-     if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){shiftY = shiftY + 240;}}
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60){shiftY = shiftY - 270;}}
+     if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){shiftY = shiftY + 270;}}
 
 	 for(var i = 0; i < blockArray.length ; i++) {
         blockArray[i].draw();
@@ -120,10 +120,16 @@ if (this.name == "Milana Vayntrub"){ctx.drawImage(MilanaVayntrub, this.x, this.y
 if (this.name == "Chloe Bennet"){ctx.drawImage(ChloeBennet, this.x, this.y - shiftY,150,200);}
 if (this.name == "Hailee Steinfeld"){ctx.drawImage(HaileeSteinfeld, this.x, this.y - shiftY,150,200);}
 
+ctx.fillStyle = "black";
+ctx.fillRect(this.x,this.y - shiftY + 205,150,50);
+ctx.lineWidth = 3;
+
+ctx.strokeRect(this.x,this.y - shiftY + 205,150,50);
+
 ctx.fillStyle = "white";
 ctx.font = "15px Arial";
-ctx.fillText(this.name, this.x, this.y+220 - shiftY); 
-ctx.fillText("Points: " + this.cost, this.x, this.y+240 - shiftY); 
+ctx.fillText(this.name, this.x + 20, this.y+220 - shiftY); 
+ctx.fillText("Points: " + this.cost, this.x + 30, this.y+240 - shiftY); 
 
 
 ctx.lineWidth = this.lineWidth;
@@ -142,6 +148,7 @@ if (this.selected == 1){ctx.drawImage(check, this.x, this.y - shiftY,150,200);}
 
 var blockArray = [];
 
+//Row 1
 blockArray.push(new block(30,80,"Morena Baccarin",5));
 
 blockArray.push(new block(220,80,"Milana Vayntrub",4));
@@ -150,9 +157,24 @@ blockArray.push(new block(410,80,"Chloe Bennet",3));
 
 blockArray.push(new block(590,80,"Hailee Steinfeld",2));
 
+//Row 2
 blockArray.push(new block(30,350,"Chloe Bennet",5));
 
-blockArray.push(new block(30,620,"Milana Vayntrub",5));
+blockArray.push(new block(220,350,"Chloe Bennet",5));
+
+blockArray.push(new block(410,350,"Chloe Bennet",5));
+
+blockArray.push(new block(590,350,"Chloe Bennet",5));
+
+//Row 3
+blockArray.push(new block(30,620,"Chloe Bennet",5));
+
+blockArray.push(new block(220,620,"Chloe Bennet",5));
+
+blockArray.push(new block(410,620,"Chloe Bennet",5));
+
+blockArray.push(new block(590,620,"Chloe Bennet",5));
+
 
 
 var scene = 0; 
