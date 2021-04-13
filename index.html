@@ -125,8 +125,10 @@ var clicknum = 0;
 var outputString = ""; 
 
 function clickfunc(){
+   if (shiftY > 100 && shiftY < 2000){
      if (canvasX > 330 && canvasX < 450){if (canvasY > 0 && canvasY < 60){shiftY = shiftY - 270;}}
      if (canvasX > 330 && canvasX < 450){if (canvasY > 345 && canvasY < 400){shiftY = shiftY + 270;}}
+   }
 
 	 for(var i = 0; i < blockArray.length ; i++) {
         blockArray[i].draw();
@@ -301,15 +303,7 @@ blockArray.push(new block(220,1970,"Jeniffer Love Hewitt",1));
 blockArray.push(new block(410,1970,"Jeniffer Lawrence",1));
 
 blockArray.push(new block(590,1970,"Jessica Alba",1));
-		
-//Row 9
-blockArray.push(new block(30,2240,"Jessica Chastain",1));
 
-blockArray.push(new block(220,2240,"Jessica Kennedy",1));
-
-blockArray.push(new block(410,2240,"Jeniffer Lawrence",1));
-
-blockArray.push(new block(590,2240,"Jessica Alba",1));
 
 var scene = 0; 
 
