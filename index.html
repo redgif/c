@@ -162,7 +162,11 @@ function myFunction() {
   for(var i = 0; i < blockArray.length ; i++) {
         if (blockArray[i].selected == 1){celebArray.push(blockArray[i].name);}
  }
+
+ document.getElementById("outputs").innerHTML = celebArray;
+
   var copyText = document.getElementById("outputs");
+
   copyText.select();
   copyText.setSelectionRange(0, 99999)
   document.execCommand("copy");
@@ -570,8 +574,6 @@ ctx.fillStyle = "white";
 ctx.fillText("Points " + points, 40, 25);
 
 ctx.fillText(bobmover, 10, 30);
-
- document.getElementById("outputs").innerHTML = celebArray;
 
 }//End of FUNCTION
 
