@@ -159,6 +159,9 @@ canvas.addEventListener("mousemove", function(e) {
 });
 
 function myFunction() {
+  for(var i = 0; i < blockArray.length ; i++) {
+        if (blockArray[i].selected == 1){celebArray.push(blockArray[i].name;}
+ }
   var copyText = document.getElementById("outputs");
   copyText.select();
   copyText.setSelectionRange(0, 99999)
@@ -199,13 +202,10 @@ function clickfunc(){
 			if (blockArray[i].selected == 1){blockArray[i].timesClicked += 1;}
 			if (points - blockArray[i].cost >= 0 && blockArray[i].selected == 0){blockArray[i].timesClicked += 1;}
 			if (blockArray[i].selected == 0 && points - blockArray[i].cost >= 0 && blockArray[i].timesClicked == 1){
-			blockArray[i].selected = 1; points = points - blockArray[i].cost; celebArray.push(blockArray[i].name);
+			blockArray[i].selected = 1; points = points - blockArray[i].cost;
 			}
 			if (blockArray[i].timesClicked == 2){points = points + blockArray[i].cost; blockArray[i].selected = 0;
-			blockArray[i].timesClicked = 0;
-			for(var x = 0; x < celebArray.length ; x++) {
-        			 if (celebArray[x].name == blockArray[i].name){celebArray[x].name = "";}
-			}	    
+			blockArray[i].timesClicked = 0;	    
 		}
         }}
 	 }
