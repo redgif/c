@@ -195,6 +195,7 @@ function clickfunc(){
 
 	 for(var i = 0; i < blockArray.length ; i++) {
         blockArray[i].draw();
+	   if (canvasY > 67 && canvasY < 330){
 		if (canvasX > blockArray[i].x && canvasX < blockArray[i].x + 150){
 		if (canvasY > blockArray[i].y - shiftY && canvasY < blockArray[i].y + 200 - shiftY){
 			if (blockArray[i].selected == 1){blockArray[i].timesClicked += 1;}
@@ -206,7 +207,7 @@ function clickfunc(){
 			blockArray[i].timesClicked = 0;}
         }}
 	 }
-	
+	 }
 };
 
 
