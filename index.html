@@ -14,6 +14,7 @@
 <img id="testimg" width="0" height="0" style="visibility:hidden" src="testimg.png">
 <img id="nature" width="0" height="0" style="visibility:hidden" src="nature.png">
 <img id="check" width="0" height="0" style="visibility:hidden" src="check.png">
+<img id="endscreen" width="0" height="0" style="visibility:hidden" src="endscreen.png">
 
 <img id="MorenaBaccarin" width="0" height="0" style="visibility:hidden" src="celebs/Morena.png">
 <img id="MilanaVayntrub" width="0" height="0" style="visibility:hidden" src="celebs/Milana.png">
@@ -578,19 +579,20 @@ ctx.fillStyle = "#3d3d3d";
 ctx.drawImage(up, 330,0,120,60);
 ctx.drawImage(down, 330,340,120,60);
 
+ctx.drawImage(endscreen, 0,5400,800,400);
 
 ctx.fillStyle = "white";
 ctx.font = "20px Arial";
-ctx.fillText(canvasX, 10, 380);
-ctx.fillText(canvasY, 100, 380);
+//ctx.fillText(canvasX, 10, 380);
+//ctx.fillText(canvasY, 100, 380);
 
 ctx.fillStyle = "gray";
 ctx.fillRect(30,0,100,40);
 
 ctx.fillStyle = "white";
-ctx.fillText("Points " + points, 40, 25);
+ctx.fillText("Points: " + points, 40, 25);
 
-ctx.fillText(bobmover, 10, 30);
+//ctx.fillText(bobmover, 10, 30);
 
 }//End of FUNCTION
 
