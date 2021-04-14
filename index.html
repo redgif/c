@@ -202,7 +202,11 @@ function clickfunc(){
 			blockArray[i].selected = 1; points = points - blockArray[i].cost; celebArray.push(blockArray[i].name);
 			}
 			if (blockArray[i].timesClicked == 2){points = points + blockArray[i].cost; blockArray[i].selected = 0;
-			blockArray[i].timesClicked = 0;}
+			blockArray[i].timesClicked = 0;
+			for(var x = 0; x < celebArray.length ; x++) {
+        			 if (celebArray[x].name == blockArray[i].name){celebArray[x].name = "";}
+			}	    
+		}
         }}
 	 }
 	 }
