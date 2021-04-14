@@ -143,8 +143,6 @@
 <textarea id="outputs" style="background-color: black; color: white; margin-top:10px" rows="4" cols="50">
 </textarea>
 
-
-
 </body>
 
 <script>
@@ -201,7 +199,7 @@ function clickfunc(){
 			if (blockArray[i].selected == 1){blockArray[i].timesClicked += 1;}
 			if (points - blockArray[i].cost >= 0 && blockArray[i].selected == 0){blockArray[i].timesClicked += 1;}
 			if (blockArray[i].selected == 0 && points - blockArray[i].cost >= 0 && blockArray[i].timesClicked == 1){
-			blockArray[i].selected = 1; points = points - blockArray[i].cost;
+			blockArray[i].selected = 1; points = points - blockArray[i].cost; celebArray.push(blockArray[i].name);
 			}
 			if (blockArray[i].timesClicked == 2){points = points + blockArray[i].cost; blockArray[i].selected = 0;
 			blockArray[i].timesClicked = 0;}
@@ -522,6 +520,9 @@ var points = 10;
 
 var bobmover = 0; 
 var timer = 0;
+	
+var celebArray = []; 
+	
 function move() {
 
 if (bobmover == 1){timer = timer + 1; if (timer < 28){shiftY = shiftY - 10;} if (timer >= 27){bobmover = 0; timer = 0;}}
@@ -566,6 +567,7 @@ ctx.fillText("Points " + points, 40, 25);
 
 ctx.fillText(bobmover, 10, 30);
 
+ document.getElementById("outputs").innerHTML = celebArray;
 
 }//End of FUNCTION
 
