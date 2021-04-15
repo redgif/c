@@ -153,6 +153,8 @@ ctx.font = "16px Arial";
 
 var canvasX = 0; 
 var canvasY = 0; 
+	
+var outputString = ""; 
 canvas.addEventListener("mousemove", function(e) { 
     var cRect = canvas.getBoundingClientRect();              // Gets the CSS positions along with width/height
     canvasX = Math.round(e.clientX - cRect.left);        // Subtract the 'left' of the canvas from the X/Y
@@ -162,6 +164,10 @@ canvas.addEventListener("mousemove", function(e) {
 function myFunction() {
   for(var i = 0; i < blockArray.length ; i++) {
         if (blockArray[i].selected == 1){celebArray.push(blockArray[i].name);}
+ }
+	
+for(var i = 0; i < celebArray.length ; i++) {
+        outputString = outputString + " " + celebArray[i].name + "\n" + "\n"; 
  }
 
  document.getElementById("outputs").innerHTML = celebArray;
