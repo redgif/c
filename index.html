@@ -161,7 +161,12 @@ canvas.addEventListener("mousemove", function(e) {
     canvasY = Math.round(e.clientY - cRect.top);         // positions to get make (0,0) the top left of the    
 });
 
+
+var retardProof = 0; 
 function myFunction() {
+retardProof = retardProof + 1;
+	
+if (retardProof == 1){
   for(var i = 0; i < blockArray.length ; i++) {
         if (blockArray[i].selected == 1){celebArray.push(blockArray[i].name);}
  }
@@ -170,6 +175,7 @@ for(var i = 0; i < celebArray.length ; i++) {
         outputString = outputString + " " + celebArray[i] + "\n" + "\n"; 
  }
 
+}
  document.getElementById("outputs").innerHTML = outputString;
 
   var copyText = document.getElementById("outputs");
